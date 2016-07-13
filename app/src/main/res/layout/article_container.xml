@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.daprlabs.cardstack.SwipeFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="vertical">
+
+    <com.daprlabs.cardstack.SwipeLinearLayout
+    xmlns:swipedeck="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@android:color/white">
 
     <com.daprlabs.cardstack.SwipeDeck
@@ -13,5 +17,24 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         swipedeck:card_spacing="10dp"/>
+</com.daprlabs.cardstack.SwipeLinearLayout>
 
-</com.daprlabs.cardstack.SwipeFrameLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/like_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="10dp"
+        android:tint="@android:color/background_light"
+        android:src="@drawable/check"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/dislike_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|left"
+        android:layout_marginLeft="10dp"
+        android:tint="@android:color/background_light"
+        android:src="@drawable/close"/>
+
+    </FrameLayout>

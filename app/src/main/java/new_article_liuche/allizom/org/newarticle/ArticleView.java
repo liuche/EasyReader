@@ -13,7 +13,9 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +28,10 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ArticleView extends Activity {
+public class ArticleView extends AppCompatActivity {
     public static final String LOGTAG = "ArticleView";
+    FloatingActionButton likeButton;
+    FloatingActionButton dislikeButton;
 
     final String[] STACK_URLS = {"http://www.vox.com/2016/7/11/12129162/pokemon-go-android-ios-game",
                                  "http://www.thedailybeast.com/articles/2016/07/11/pokemon-go-is-a-hacker-s-dream.html",
@@ -42,11 +46,27 @@ public class ArticleView extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article_container);
 
+        final SwipeDeck container = (SwipeDeck) findViewById(R.id.swipe_deck);
+        likeButton = (FloatingActionButton) findViewById(R.id.like_button);
+        likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                container.swipeTopCardRight(10);
+            }
+        });
+        dislikeButton = (FloatingActionButton) findViewById(R.id.dislike_button);
+        dislikeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                container.swipeTopCardLeft(10);
+            }
+        });
+
+
         final Featurizer featurizer = new Featurizer();
 
         final LinkedList<CardModel> cardList = new LinkedList();
 
-        final SwipeDeck container = (SwipeDeck) findViewById(R.id.swipe_deck);
         final SwipeDeckAdapter adapter = new SwipeDeckAdapter(cardList, context);
         container.setAdapter(adapter);
 
@@ -84,7 +104,10 @@ public class ArticleView extends Activity {
             }
 
             @Override
-            public void cardsDepleted() {}
+            public void cardsDepleted() {
+                likeButton.setVisibility(View.INVISIBLE);
+                dislikeButton.setVisibility(View.INVISIBLE);
+            }
 
             @Override
             public void cardActionDown() {}
