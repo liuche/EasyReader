@@ -6,13 +6,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".ArticleView">
+        <activity android:name=".TopicChooser"
+            android:label="Reader">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ArticleView"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
