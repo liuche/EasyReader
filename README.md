@@ -1,3 +1,5 @@
+EasyReader is a UI prototype of a simple reader app that provides a feed of articles. The data is mocked up, but would eventually be hooked up to sensible default article sources, and filter articles based on previous selections.
+
 License
 -------
 
