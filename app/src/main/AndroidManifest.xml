@@ -6,13 +6,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".TopicChooser"
-            android:label="Reader">
+
+        <activity android:name=".Introduction"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:label="EasyReader">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".TopicChooser"/>
         <activity android:name=".ArticleView"
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
